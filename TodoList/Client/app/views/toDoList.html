@@ -1,0 +1,118 @@
+<style>
+    /* Center the container */
+    .todo-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+               min-height: 100vh;
+               font-family: Arial, sans-serif;
+           }
+   
+           /* Card design */
+           .todo-card {
+               background-color: #f9f9f9;
+               border: 1px solid #ddd;
+               border-radius: 8px;
+               padding: 20px;
+               margin: 10px;
+               width: 300px;
+               box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+               position: relative;
+           }
+   
+           /* Title styling */
+           .todo-title {
+               font-weight: bold;
+               font-size: 1.2em;
+               margin-bottom: 5px;
+           }
+   
+           /* Content styling */
+           .todo-content {
+               font-size: 0.9em;
+               color: #555;
+               margin-bottom: 10px;
+           }
+   
+           /* Strikethrough when marked as done */
+           .done .todo-title,
+           .done .todo-content {
+               text-decoration: line-through;
+               color: #999;
+           }
+   
+           /* Checkbox and label */
+           .todo-checkbox {
+               display: flex;
+               align-items: center;
+           }
+   
+           .todo-checkbox label {
+               margin-left: 10px;
+               font-size: 0.9em;
+               color: #333;
+           }
+   
+           /* Buttons styling */
+           .todo-buttons {
+               margin-top: 15px;
+               display: flex;
+               justify-content: space-between;
+           }
+   
+           .todo-buttons button {
+               background-color: #007bff;
+               color: white;
+               border: none;
+               padding: 5px 10px;
+               border-radius: 5px;
+               cursor: pointer;
+           }
+   
+           .todo-buttons button.delete {
+               background-color: #dc3545;
+           }
+   
+           .todo-buttons button:hover {
+               opacity: 0.9;
+           }
+   
+           /* Input fields for editing */
+           .todo-edit-input {
+               width: 100%;
+               padding: 8px;
+               margin-bottom: 10px;
+               font-size: 0.9em;
+           }
+   
+           .todo-buttons button.save {
+               background-color: #28a745;
+           }
+   </style>
+   
+   <body ng-controller="toDoController">
+   <div class="todo-container">
+       <div class="todo-card" ng-repeat="todo in todoItems" ng-class="{'done': todo.done}">
+           <div ng-if="!todo.isEditing">
+               <div class="todo-title">{{todo.title}}</div>
+               <div class="todo-content">{{todo.content}}</div>
+           </div>
+           <div ng-if="todo.isEditing">
+               
+               <input type="text" class="todo-edit-input" ng-model="todo.title">
+               <input type="text" class="tofo-edit-input" ng-model="todo.content">
+           </div>
+           <div class="todo-checkbox">
+               <input type="checkbox" id="done-{{$index}}" ng-model="todo.done">
+               <label for="done-{{$index}}">Mark as done</label>
+           </div>
+           <div class="todo-buttons">
+               <button ng-if="!todo.isEditing" ng-model="todo.id" ng-click="editItem(todo.id)">Edit</button>
+               <button ng-if="todo.isEditing" ng-click="saveItem($index)" class="save">Save</button>
+               <button ng-click="deleteItem(todo.id)" class="delete">Delete</button>
+           </div>
+       </div>
+   </div>
+
+   </body>

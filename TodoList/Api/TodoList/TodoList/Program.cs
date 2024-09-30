@@ -18,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddTransient<DapperContext>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 builder.Services.AddScoped<ITodo, ToDoRepository>();
+builder.Services.AddCors();
 
 builder.Services.AddControllers();
 
@@ -35,6 +36,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod()
+.AllowCredentials()
+.WithOrigins("http://127.0.0.1:5500/"));
 app.UseAuthorization();
 
 app.MapControllers();

@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-sm" style="width: 400px;">
+      <form ng-app="myApp" ng-controller="createtoDoController">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" ng-model="todo.title" placeholder="Enter title">
+        </div>
+        <div class="mb-3">
+          <label for="todoContent" class="form-label">Todo</label>
+          <input type="text" class="form-control" id="todoContent" ng-model="todo.content" placeholder="Enter your task">
+        </div>
+        <button type="submit" class="btn btn-primary w-100" ng-click="Add()">Add</button>
+      </form>
+    </div>
+  </div>
