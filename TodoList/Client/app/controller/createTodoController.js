@@ -1,4 +1,4 @@
-window.app.controller('createtoDoController',function($scope,todoService){
+window.app.controller('createtoDoController',function($scope,todoService,$location){
 
     $scope.todo={
         title:'',
@@ -12,6 +12,8 @@ window.app.controller('createtoDoController',function($scope,todoService){
      };
      todoService.addTodo(newTodo)
      $scope.todo.title='';
-         $scope.todo.content='';
+     $scope.todo.content='';
+     $location.path('/todo'); 
  }
 })
+

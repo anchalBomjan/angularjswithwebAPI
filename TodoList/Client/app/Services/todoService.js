@@ -7,25 +7,26 @@ window.app.factory("todoService", function ($http) {
 
     service.getTodos = function () {
         return $http.get(baseUrl);
-    },
+    };
 
     service.getTodoById=function(id){
-        return $http.get(baseUrl+'/'+id);
-    }
+        return $http.get(baseUrl + '/' + id);
+    };
 
     service.addTodo = function (newTodo) {
-        // service.todoItems.push(newTodo);
         return $http.post(baseUrl, newTodo).then(function (response) {
             service.todoItems.push(response.data);
             service.newTodo = {};
         });
     };
+
     service.updateTodo = function(todoItem) {
         return $http.put(baseUrl, todoItem);
     };
 
     service.deleteToDo = function (id) {
-        return $http.delete(baseUrl + "/" + id)
+        return $http.delete(baseUrl + "/" + id);
     };
+
     return service;
 });
