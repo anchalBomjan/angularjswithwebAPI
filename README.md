@@ -7,5 +7,5 @@ Scaffold-DbContext "Server=DESKTOP-ANCHAL\SQLEXPRESS;Database=TodoList;Trusted_C
 
 
 
-# This example able to understant  the concept of route , scope, load the files after certain event
+# This example able to understand  the concept of route , scope, load the files after certain event
 
